@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 // ---------------------------------------------------------------------------
-// PARSER — converts filenames like "01_Nick.jpg" into participant objects.
-// Use this when you have a real /images folder. Mock data is used by default.
+// PARSER — converts "01_Nick.jpg" → participant object.
+// Use when you have a real /images folder. Mock data is used by default.
 // ---------------------------------------------------------------------------
 export function parseFilename(filename) {
   const m = filename.match(/^(\d+)_(.+?)\.\w+$/);
@@ -33,73 +33,25 @@ function getRoundLabel(count) {
 
 // ---------------------------------------------------------------------------
 // MOCK DATA — 16 Amazing World of Gumball characters as Room 6/1 students.
-// Images sourced from Wikimedia Commons (CC-licensed) and Gumball Fandom wiki.
+// Images: Wikimedia Commons (CC-licensed) + Gumball Fandom wiki.
 // ---------------------------------------------------------------------------
 const BASE_PARTICIPANTS = [
-  {
-    id: 1, name: 'Gumball',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Gumball_Watterson.svg/300px-Gumball_Watterson.svg.png',
-  },
-  {
-    id: 2, name: 'Darwin',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Darwin_Watterson.svg/300px-Darwin_Watterson.svg.png',
-  },
-  {
-    id: 3, name: 'Anais',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Anais_Watterson.svg/300px-Anais_Watterson.svg.png',
-  },
-  {
-    id: 4, name: 'Penny',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Penny_Fitzgerald_%28no_shell%29.png',
-  },
-  {
-    id: 5, name: 'Tobias',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Tobias_Wilson.svg/300px-Tobias_Wilson.svg.png',
-  },
-  {
-    id: 6, name: 'Carrie',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Carrie_Krueger.svg/300px-Carrie_Krueger.svg.png',
-  },
-  {
-    id: 7, name: 'Banana Joe',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/Banana_Joe.png',
-  },
-  {
-    id: 8, name: 'Bobert',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Bobert_6B.png',
-  },
-  {
-    id: 9, name: 'Alan',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Alan_Keane.png',
-  },
-  {
-    id: 10, name: 'Carmen',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Carmen_Verde.svg/300px-Carmen_Verde.svg.png',
-  },
-  {
-    id: 11, name: 'Molly',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Molly_Collins.svg/300px-Molly_Collins.svg.png',
-  },
-  {
-    id: 12, name: 'Tina Rex',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Tina_Rex.png',
-  },
-  {
-    id: 13, name: 'Nicole',
-    imgUrl: 'https://static.wikia.nocookie.net/theamazingworldofgumball/images/f/f4/Nicole_Watterson.png/revision/latest?cb=20131022121059',
-  },
-  {
-    id: 14, name: 'Richard',
-    imgUrl: 'https://static.wikia.nocookie.net/theamazingworldofgumball/images/6/69/Richard_Watterson.png/revision/latest?cb=20131022121026',
-  },
-  {
-    id: 15, name: 'Idaho',
-    imgUrl: 'https://static.wikia.nocookie.net/theamazingworldofgumball/images/a/ac/Idaho.png/revision/latest?cb=20120413015847',
-  },
-  {
-    id: 16, name: 'Leslie',
-    imgUrl: 'https://static.wikia.nocookie.net/theamazingworldofgumball/images/3/38/Leslie.png/revision/latest?cb=20110515131635',
-  },
+  { id:  1, name: 'Gumball',    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Gumball_Watterson.svg/300px-Gumball_Watterson.svg.png' },
+  { id:  2, name: 'Darwin',     imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Darwin_Watterson.svg/300px-Darwin_Watterson.svg.png' },
+  { id:  3, name: 'Anais',      imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Anais_Watterson.svg/300px-Anais_Watterson.svg.png' },
+  { id:  4, name: 'Penny',      imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Penny_Fitzgerald_%28no_shell%29.png' },
+  { id:  5, name: 'Tobias',     imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Tobias_Wilson.svg/300px-Tobias_Wilson.svg.png' },
+  { id:  6, name: 'Carrie',     imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Carrie_Krueger.svg/300px-Carrie_Krueger.svg.png' },
+  { id:  7, name: 'Banana Joe', imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/Banana_Joe.png' },
+  { id:  8, name: 'Bobert',     imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Bobert_6B.png' },
+  { id:  9, name: 'Alan',       imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Alan_Keane.png' },
+  { id: 10, name: 'Carmen',     imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Carmen_Verde.svg/300px-Carmen_Verde.svg.png' },
+  { id: 11, name: 'Molly',      imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Molly_Collins.svg/300px-Molly_Collins.svg.png' },
+  { id: 12, name: 'Tina Rex',   imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Tina_Rex.png' },
+  { id: 13, name: 'Nicole',     imgUrl: 'https://static.wikia.nocookie.net/theamazingworldofgumball/images/f/f4/Nicole_Watterson.png/revision/latest?cb=20131022121059' },
+  { id: 14, name: 'Richard',    imgUrl: 'https://static.wikia.nocookie.net/theamazingworldofgumball/images/6/69/Richard_Watterson.png/revision/latest?cb=20131022121026' },
+  { id: 15, name: 'Idaho',      imgUrl: 'https://static.wikia.nocookie.net/theamazingworldofgumball/images/a/ac/Idaho.png/revision/latest?cb=20120413015847' },
+  { id: 16, name: 'Leslie',     imgUrl: 'https://static.wikia.nocookie.net/theamazingworldofgumball/images/3/38/Leslie.png/revision/latest?cb=20110515131635' },
 ].map(p => ({ ...p, winCount: 0, championCount: 0 }));
 
 // ---------------------------------------------------------------------------
@@ -108,20 +60,13 @@ const BASE_PARTICIPANTS = [
 const DB_KEY = '67sigma_db';
 
 function loadDB() {
-  try {
-    const raw = localStorage.getItem(DB_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch { return null; }
+  try { return JSON.parse(localStorage.getItem(DB_KEY)); } catch { return null; }
 }
-
 function saveDB(participants, categories, totalRuns) {
-  try {
-    localStorage.setItem(DB_KEY, JSON.stringify({ participants, categories, totalRuns }));
-  } catch {}
+  try { localStorage.setItem(DB_KEY, JSON.stringify({ participants, categories, totalRuns })); } catch {}
 }
-
-function fallbackSrc(label, w = 300, h = 260) {
-  return `https://placehold.co/${w}x${h}/dddddd/333333?text=${encodeURIComponent(label)}`;
+function fallbackSrc(label, w = 300, h = 270) {
+  return `https://placehold.co/${w}x${h}/16163a/a78bfa?text=${encodeURIComponent(label)}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -133,38 +78,28 @@ export default function App() {
     const db = loadDB();
     if (!db?.participants) return BASE_PARTICIPANTS;
     return BASE_PARTICIPANTS.map(p => {
-      const saved = db.participants.find(s => s.id === p.id);
-      return saved ? { ...p, winCount: saved.winCount, championCount: saved.championCount } : p;
+      const s = db.participants.find(x => x.id === p.id);
+      return s ? { ...p, winCount: s.winCount, championCount: s.championCount } : p;
     });
   });
-
-  const [categories, setCategories] = useState(() => {
-    const db = loadDB();
-    return db?.categories ?? ['Most Popular', 'Best Smile'];
-  });
-
-  const [totalRuns, setTotalRuns] = useState(() => {
-    const db = loadDB();
-    return db?.totalRuns ?? 0;
-  });
+  const [categories, setCategories] = useState(() => loadDB()?.categories ?? ['Most Popular', 'Best Smile']);
+  const [totalRuns,  setTotalRuns]  = useState(() => loadDB()?.totalRuns ?? 0);
 
   // ── Auth ──────────────────────────────────────────────────────────────────
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin,     setIsAdmin]     = useState(false);
   const [newCatInput, setNewCatInput] = useState('');
 
   // ── Tournament runtime ────────────────────────────────────────────────────
-  const [screen, setScreen]           = useState('home');   // 'home' | 'battle' | 'leaderboard'
-  const [selectedCat, setSelectedCat] = useState('');
-  const [currentRound, setCurrentRound]   = useState([]);  // participants active this round
-  const [matchIndex, setMatchIndex]       = useState(0);   // current pair index (0-based)
-  const [roundWinners, setRoundWinners]   = useState([]);  // winners collected this round
-  const [runWins, setRunWins]             = useState({});  // { [id]: matchWins } this run
-  const [champion, setChampion]           = useState(null);
-  const [isSaving, setIsSaving]           = useState(false);
+  const [screen,       setScreen]       = useState('home');   // 'home'|'battle'|'leaderboard'
+  const [selectedCat,  setSelectedCat]  = useState('');
+  const [currentRound, setCurrentRound] = useState([]);
+  const [matchIndex,   setMatchIndex]   = useState(0);
+  const [roundWinners, setRoundWinners] = useState([]);
+  const [runWins,      setRunWins]      = useState({});
+  const [champion,     setChampion]     = useState(null);
+  const [isSaving,     setIsSaving]     = useState(false);
 
-  useEffect(() => {
-    saveDB(participants, categories, totalRuns);
-  }, [participants, categories, totalRuns]);
+  useEffect(() => { saveDB(participants, categories, totalRuns); }, [participants, categories, totalRuns]);
 
   // ── Derived ───────────────────────────────────────────────────────────────
   const totalMatches = currentRound.length / 2;
@@ -195,14 +130,11 @@ export default function App() {
     const updatedWinners = [...roundWinners, winner];
 
     if (updatedWinners.length < totalMatches) {
-      // More matches left in this round
       setRoundWinners(updatedWinners);
       setMatchIndex(i => i + 1);
     } else if (updatedWinners.length === 1) {
-      // Final match complete — one survivor
       finalizeTournament(updatedWinners[0], updatedRunWins);
     } else {
-      // Round complete — advance bracket
       setCurrentRound(updatedWinners);
       setRoundWinners([]);
       setMatchIndex(0);
@@ -211,15 +143,12 @@ export default function App() {
 
   const finalizeTournament = (winner, finalRunWins) => {
     setIsSaving(true);
-    // Simulate async API write
     setTimeout(() => {
-      setParticipants(prev =>
-        prev.map(p => ({
-          ...p,
-          winCount:      p.winCount      + (finalRunWins[p.id] ?? 0),
-          championCount: p.championCount + (p.id === winner.id ? 1 : 0),
-        }))
-      );
+      setParticipants(prev => prev.map(p => ({
+        ...p,
+        winCount:      p.winCount      + (finalRunWins[p.id] ?? 0),
+        championCount: p.championCount + (p.id === winner.id ? 1 : 0),
+      })));
       setTotalRuns(r => r + 1);
       setChampion(winner);
       setIsSaving(false);
@@ -237,9 +166,9 @@ export default function App() {
   };
 
   const addCategory = () => {
-    const trimmed = newCatInput.trim();
-    if (!trimmed || categories.includes(trimmed)) return;
-    setCategories(prev => [...prev, trimmed]);
+    const t = newCatInput.trim();
+    if (!t || categories.includes(t)) return;
+    setCategories(prev => [...prev, t]);
     setNewCatInput('');
   };
 
@@ -249,198 +178,187 @@ export default function App() {
     setTotalRuns(0);
   };
 
-  // ── Style tokens ──────────────────────────────────────────────────────────
-  const T = {
-    wrap:    { fontFamily: '"Courier New", Courier, monospace', maxWidth: 960, margin: '0 auto', padding: '16px', color: '#000', background: '#fff', minHeight: '100vh' },
-    row:     { display: 'flex', alignItems: 'center', gap: 8 },
-    btn:     { padding: '8px 14px', fontFamily: 'inherit', fontSize: 13, border: '2px solid #000', background: '#fff', color: '#000', cursor: 'pointer' },
-    btnDark: { padding: '8px 14px', fontFamily: 'inherit', fontSize: 13, border: '2px solid #000', background: '#000', color: '#fff', cursor: 'pointer' },
-    input:   { padding: 8, fontFamily: 'inherit', fontSize: 14, border: '2px solid #000', outline: 'none' },
-    card:    { border: '3px solid #000', padding: 8, cursor: 'pointer', textAlign: 'center', userSelect: 'none' },
-    imgBox:  { width: '100%', height: 260, objectFit: 'contain', display: 'block', background: '#f0f0f0' },
-  };
-
   // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <div style={T.wrap}>
+    <div className="app">
 
-      {/* HEADER */}
-      <header style={{ ...T.row, justifyContent: 'space-between', borderBottom: '3px solid #000', paddingBottom: 8, marginBottom: 20 }}>
-        <strong style={{ fontSize: 16 }}>67Σ · ROOM 6/1 · TOURNAMENT</strong>
-        <div style={T.row}>
-          <code style={{ fontSize: 11, border: '1px solid #999', padding: '2px 6px' }}>
+      {/* ── HEADER ─────────────────────────────────────────────────────── */}
+      <header className="header">
+        <span className="header-title">67Σ · ROOM 6/1 · TOURNAMENT</span>
+        <div className="header-right">
+          <span className={`role-badge${isAdmin ? ' admin' : ''}`}>
             {isAdmin ? 'ADMIN' : 'GUEST'}
-          </code>
-          <button style={T.btn} onClick={() => setIsAdmin(v => !v)}>
+          </span>
+          <button className="btn" onClick={() => setIsAdmin(v => !v)}>
             {isAdmin ? 'Logout' : 'Login (Admin)'}
           </button>
         </div>
       </header>
 
-      {/* ─────────────────────── HOME ─────────────────────── */}
+      {/* ══════════════════════════════════════════════════════════════════
+          HOME
+      ══════════════════════════════════════════════════════════════════ */}
       {screen === 'home' && (
         <div>
           {isAdmin && (
-            <div style={{ border: '2px solid #000', padding: 12, marginBottom: 16 }}>
-              <strong>+ New Category (Admin only)</strong>
-              <div style={{ ...T.row, marginTop: 8 }}>
+            <div className="admin-panel">
+              <span className="admin-panel-label">+ New Category (Admin)</span>
+              <div className="admin-row">
                 <input
-                  style={{ ...T.input, flex: 1 }}
+                  className="text-input"
                   value={newCatInput}
                   onChange={e => setNewCatInput(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && addCategory()}
                   placeholder="Type a category name and press Enter…"
                 />
-                <button style={T.btnDark} onClick={addCategory}>Save</button>
+                <button className="btn btn-primary" onClick={addCategory}>Save</button>
               </div>
             </div>
           )}
 
-          <h2 style={{ margin: '0 0 12px' }}>Select a Category to Vote</h2>
+          <p className="section-label">Select a Category to Vote</p>
 
           {categories.length === 0 ? (
-            <p style={{ color: '#666' }}>
+            <div className="empty-box">
               No categories yet.{isAdmin ? ' Create one above.' : ' Ask admin to add one.'}
-            </p>
+            </div>
           ) : (
-            <div style={{ display: 'grid', gap: 6 }}>
+            <div className="cat-list">
               {categories.map(cat => (
-                <button
-                  key={cat}
-                  style={{ ...T.btn, padding: '13px 16px', textAlign: 'left', fontSize: 15, width: '100%' }}
-                  onClick={() => startTournament(cat)}
-                >
-                  ▶&nbsp;&nbsp;{cat}
+                <button key={cat} className="cat-btn" onClick={() => startTournament(cat)}>
+                  <span className="cat-arrow">▶</span>
+                  {cat}
                 </button>
               ))}
             </div>
           )}
 
-          <div style={{ ...T.row, flexWrap: 'wrap', marginTop: 20, paddingTop: 12, borderTop: '1px solid #ccc', gap: 10 }}>
-            <span style={{ fontSize: 12, color: '#666' }}>Tournaments completed: {totalRuns}</span>
+          <div className="home-footer">
+            <span className="footer-stat">Tournaments completed: {totalRuns}</span>
             {totalRuns > 0 && (
-              <button style={T.btn} onClick={() => { setChampion(null); setScreen('leaderboard'); }}>
+              <button className="btn" onClick={() => { setChampion(null); setScreen('leaderboard'); }}>
                 📊 View Leaderboard
               </button>
             )}
             {isAdmin && totalRuns > 0 && (
-              <button style={{ ...T.btn, color: 'red', borderColor: 'red' }} onClick={clearStats}>
-                Reset All Stats
-              </button>
+              <button className="btn btn-danger" onClick={clearStats}>Reset Stats</button>
             )}
           </div>
         </div>
       )}
 
-      {/* ─────────────────────── BATTLE ─────────────────────── */}
+      {/* ══════════════════════════════════════════════════════════════════
+          BATTLE
+      ══════════════════════════════════════════════════════════════════ */}
       {screen === 'battle' && (
         <div>
-          {/* Match info bar */}
-          <div style={{ background: '#000', color: '#fff', padding: '10px 14px', marginBottom: 12, fontSize: 14, fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 4 }}>
-            <span>Category: {selectedCat}</span>
-            <span>{roundLabel}: Match {matchIndex + 1} of {totalMatches}</span>
+          {/* Info bar */}
+          <div className="match-bar">
+            <span>Category: <span className="match-cat">{selectedCat}</span></span>
+            <span className="match-round">
+              {roundLabel} · Match {matchIndex + 1}/{totalMatches}
+            </span>
           </div>
 
-          {isFinal && (
-            <div style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', letterSpacing: 4, border: '4px solid #000', padding: 10, marginBottom: 12 }}>
-              ⚡ FINAL ROUND ⚡
-            </div>
-          )}
+          {/* Match progress dots */}
+          <div className="match-dots">
+            {Array.from({ length: totalMatches }, (_, i) => (
+              <span
+                key={i}
+                className={`dot${i < matchIndex ? ' done' : i === matchIndex ? ' current' : ''}`}
+              />
+            ))}
+          </div>
 
+          {/* Final banner */}
+          {isFinal && <div className="final-banner">⚡ FINAL ROUND ⚡</div>}
+
+          {/* Saving / Battle */}
           {isSaving ? (
-            <div style={{ textAlign: 'center', padding: '80px 0', fontSize: 16 }}>
-              ⏳ Saving results…
-            </div>
+            <div className="saving-screen">⏳ Saving results to database…</div>
           ) : leftPlayer && rightPlayer ? (
             <>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 48px 1fr' }}>
-
-                {/* Left player */}
-                <div style={T.card} onClick={() => handleVote(leftPlayer)}>
+              <div className="battle-grid">
+                {/* Left */}
+                <div className="player-card left" onClick={() => handleVote(leftPlayer)}>
                   <img
                     src={leftPlayer.imgUrl}
                     alt={leftPlayer.name}
-                    style={T.imgBox}
+                    className="player-img"
                     onError={e => { e.target.onerror = null; e.target.src = fallbackSrc(leftPlayer.name); }}
                   />
-                  <div style={{ fontSize: 20, fontWeight: 'bold', padding: '8px 0 4px' }}>{leftPlayer.name}</div>
-                  <div style={{ fontSize: 12, color: '#555', marginBottom: 8 }}>
+                  <div className="player-name">{leftPlayer.name}</div>
+                  <div className="player-stats">
                     Wins: {leftPlayer.winCount} · Titles: {leftPlayer.championCount}
                   </div>
-                  <button style={{ ...T.btnDark, width: '100%', padding: 10, fontSize: 14, pointerEvents: 'none' }}>
-                    ◀ VOTE
-                  </button>
+                  <button className="vote-btn left">◀ VOTE</button>
                 </div>
 
                 {/* VS */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: 15, background: '#eee', borderTop: '3px solid #000', borderBottom: '3px solid #000' }}>
-                  VS
+                <div className="vs-col">
+                  <span className="vs-text">VS</span>
                 </div>
 
-                {/* Right player */}
-                <div style={T.card} onClick={() => handleVote(rightPlayer)}>
+                {/* Right */}
+                <div className="player-card right" onClick={() => handleVote(rightPlayer)}>
                   <img
                     src={rightPlayer.imgUrl}
                     alt={rightPlayer.name}
-                    style={T.imgBox}
+                    className="player-img"
                     onError={e => { e.target.onerror = null; e.target.src = fallbackSrc(rightPlayer.name); }}
                   />
-                  <div style={{ fontSize: 20, fontWeight: 'bold', padding: '8px 0 4px' }}>{rightPlayer.name}</div>
-                  <div style={{ fontSize: 12, color: '#555', marginBottom: 8 }}>
+                  <div className="player-name">{rightPlayer.name}</div>
+                  <div className="player-stats">
                     Wins: {rightPlayer.winCount} · Titles: {rightPlayer.championCount}
                   </div>
-                  <button style={{ ...T.btnDark, width: '100%', padding: 10, fontSize: 14, pointerEvents: 'none' }}>
-                    VOTE ▶
-                  </button>
+                  <button className="vote-btn right">VOTE ▶</button>
                 </div>
-
               </div>
-              <p style={{ textAlign: 'center', fontSize: 11, color: '#999', marginTop: 6 }}>
-                Click a card to vote
-              </p>
+
+              <p className="battle-hint">Click a card to cast your vote</p>
             </>
           ) : null}
 
-          <div style={{ marginTop: 16 }}>
-            <button style={T.btn} onClick={resetToHome}>✕ Quit Tournament</button>
+          <div className="battle-actions">
+            <button className="btn btn-ghost" onClick={resetToHome}>✕ Quit Tournament</button>
           </div>
         </div>
       )}
 
-      {/* ─────────────────────── LEADERBOARD ─────────────────────── */}
+      {/* ══════════════════════════════════════════════════════════════════
+          LEADERBOARD
+      ══════════════════════════════════════════════════════════════════ */}
       {screen === 'leaderboard' && (
         <div>
+          {/* Champion spotlight */}
           {champion && (
-            <div style={{ border: '4px solid #000', textAlign: 'center', padding: 20, marginBottom: 20 }}>
-              <div style={{ fontSize: 48 }}>🏆</div>
+            <div className="champ-card">
+              <span className="champ-trophy">🏆</span>
               <img
                 src={champion.imgUrl}
                 alt={champion.name}
-                style={{ height: 160, objectFit: 'contain', display: 'block', margin: '8px auto', background: '#f0f0f0' }}
-                onError={e => { e.target.onerror = null; e.target.src = fallbackSrc(champion.name, 160, 160); }}
+                className="champ-img"
+                onError={e => { e.target.onerror = null; e.target.src = fallbackSrc(champion.name, 170, 170); }}
               />
-              <div style={{ fontSize: 26, fontWeight: 'bold', letterSpacing: 2 }}>
-                CHAMPION: {champion.name.toUpperCase()}
-              </div>
-              <div style={{ fontSize: 13, color: '#555', marginTop: 4 }}>Category: {selectedCat}</div>
+              <div className="champ-name">CHAMPION: {champion.name.toUpperCase()}</div>
+              <div className="champ-cat">Category: {selectedCat}</div>
             </div>
           )}
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-            <h2 style={{ margin: 0 }}>Global Leaderboard</h2>
-            <span style={{ fontSize: 12, color: '#666' }}>
-              {totalRuns} tournament{totalRuns !== 1 ? 's' : ''} played
-            </span>
+          {/* Table */}
+          <div className="lb-head">
+            <h2 className="lb-title">Global Leaderboard</h2>
+            <span className="lb-meta">{totalRuns} tournament{totalRuns !== 1 ? 's' : ''} played</span>
           </div>
 
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+          <table className="lb-table">
             <thead>
-              <tr style={{ background: '#000', color: '#fff' }}>
-                <th style={{ padding: 8, textAlign: 'center', width: 50 }}>Rank</th>
-                <th style={{ padding: 8, textAlign: 'center', width: 52 }}>Photo</th>
-                <th style={{ padding: 8, textAlign: 'left' }}>Name</th>
-                <th style={{ padding: 8, textAlign: 'right' }}>Total Wins</th>
-                <th style={{ padding: 8, textAlign: 'right' }}>Champ&nbsp;%</th>
+              <tr>
+                <th className="lb-rank">Rank</th>
+                <th>Photo</th>
+                <th>Name</th>
+                <th style={{ textAlign: 'right' }}>Total Wins</th>
+                <th style={{ textAlign: 'right' }}>Champ&nbsp;%</th>
               </tr>
             </thead>
             <tbody>
@@ -450,42 +368,31 @@ export default function App() {
                   ? ((p.championCount / totalRuns) * 100).toFixed(1) + '%'
                   : '—';
                 return (
-                  <tr
-                    key={p.id}
-                    style={{
-                      borderBottom: '1px solid #ddd',
-                      background: isChamp ? '#fffde7' : i % 2 === 0 ? '#fff' : '#f9f9f9',
-                      fontWeight: isChamp ? 'bold' : 'normal',
-                    }}
-                  >
-                    <td style={{ padding: '6px 8px', textAlign: 'center' }}>
+                  <tr key={p.id} className={isChamp ? 'is-champ' : ''}>
+                    <td className="lb-rank">
                       {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`}
                     </td>
-                    <td style={{ padding: '4px 8px', textAlign: 'center' }}>
+                    <td>
                       <img
                         src={p.imgUrl}
                         alt={p.name}
-                        style={{ height: 36, width: 36, objectFit: 'contain', display: 'block', margin: '0 auto', background: '#f0f0f0' }}
-                        onError={e => { e.target.onerror = null; e.target.src = fallbackSrc(p.name[0], 36, 36); }}
+                        className="lb-thumb"
+                        onError={e => { e.target.onerror = null; e.target.src = fallbackSrc(p.name[0], 38, 38); }}
                       />
                     </td>
-                    <td style={{ padding: '6px 8px' }}>{p.name}{isChamp ? ' 🏆' : ''}</td>
-                    <td style={{ padding: '6px 8px', textAlign: 'right' }}>{p.winCount}</td>
-                    <td style={{ padding: '6px 8px', textAlign: 'right' }}>{champPct}</td>
+                    <td className="lb-name">{p.name}{isChamp ? ' 🏆' : ''}</td>
+                    <td className="lb-wins">{p.winCount}</td>
+                    <td className="lb-pct">{champPct}</td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
 
-          <div style={{ ...T.row, flexWrap: 'wrap', marginTop: 16, gap: 8 }}>
-            <button style={{ ...T.btnDark, padding: '10px 20px', fontSize: 14 }} onClick={resetToHome}>
-              ← Play Again / Change Category
-            </button>
+          <div className="lb-actions">
+            <button className="btn btn-accent" onClick={resetToHome}>← Play Again / Change Category</button>
             {isAdmin && (
-              <button style={{ ...T.btn, color: 'red', borderColor: 'red', padding: '10px 20px', fontSize: 14 }} onClick={clearStats}>
-                Reset All Stats
-              </button>
+              <button className="btn btn-danger" onClick={clearStats}>Reset All Stats</button>
             )}
           </div>
         </div>
